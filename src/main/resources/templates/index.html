@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8">
+    <title th:text="${studentModel.title}"></title>
+</head>
+<body>
+<div th:replace="~{fragments/header :: header}">...</div>
+<div th:text="${studentModel.title}"></div>
+<div>
+    <a href="/student/form">添加用户</a>
+</div>
+<table border="1">
+    <thead>
+    <tr>
+        <td>ID</td>
+        <td>名字</td>
+        <td>性别</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${studentModel.studentList.size()} eq 0">
+        <td colspan="3">没有用户信息!</td>
+    </tr>
+    <tr th:each="stu : ${studentModel.studentList}">
+        <td th:text="${stu.stuId}"></td>
+        <td th:text="${stu.stuName}"></td>
+        <td th:text="${stu.stuSex}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
